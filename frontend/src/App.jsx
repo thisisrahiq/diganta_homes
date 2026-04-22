@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import WhatsAppButton from './components/layout/WhatsAppButton';
