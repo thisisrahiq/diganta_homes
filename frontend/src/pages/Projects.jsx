@@ -5,13 +5,22 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState('all');
 
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
     console.log("Fetching projects from:", `${API_URL}/api/projects/`);
+    
     fetch(`${API_URL}/api/projects/`)
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error("Failed to fetch");
+        return res.json();
+      })
       .then(data => setProjects(data))
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        setError("Unable to connect to the server. Please ensure the backend is running and the VITE_API_URL is set correctly.");
+      });
   }, []);
 
   const filteredProjects = projects.filter(p => {
@@ -46,9 +55,19 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((proj) => (
-            <ProjectCard key={proj.id} project={proj} />
-          ))}
+          {error ? (
+            <div className="col-span-full py-20 text-center text-accent/80 font-heading text-lg">
+              {error}
+            </div>
+          ) : filteredProjects.length > 0 ? (
+            filteredProjects.map((proj) => (
+              <ProjectCard key={proj.id} project={proj} />
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center text-gray-400 italic">
+              No projects match your criteria.
+            </div>
+          )}
         </div>
       </div>
     </div>
