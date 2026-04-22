@@ -7,6 +7,7 @@ const Projects = () => {
 
   useEffect(() => {
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    console.log("Fetching projects from:", `${API_URL}/api/projects/`);
     fetch(`${API_URL}/api/projects/`)
       .then(res => res.json())
       .then(data => setProjects(data))
