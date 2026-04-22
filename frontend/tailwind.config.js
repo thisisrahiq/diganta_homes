@@ -14,6 +14,8 @@ export default {
       fontFamily: {
         heading: ['Playfair Display', 'serif'],
         body: ['Inter', 'sans-serif'],
+        goldman: ['Goldman', 'sans-serif'],
+        'bodoni-moda': ['Bodoni Moda', 'serif'],
       },
     },
   },

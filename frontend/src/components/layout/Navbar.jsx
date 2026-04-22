@@ -25,7 +25,7 @@ const Navbar = () => {
   ];
 
   const isHome = location.pathname === '/';
-  const headerBg = isScrolled || !isHome ? 'bg-[#111111] shadow-2xl' : 'bg-transparent';
+  const headerBg = isScrolled || !isHome ? 'bg-[#111111] shadow-[0_10px_40px_rgba(0,0,0,0.8)]' : 'bg-transparent';
 
   return (
     <>
@@ -35,9 +35,11 @@ const Navbar = () => {
 
             {/* Logo + Brand Name */}
             <Link to="/" className="flex items-center gap-3 group">
-              <img src="/Logo/logo-transparent.png" alt="Diganta Homes Logo" className="h-24 w-auto " />
-              <div className="flex flex-col leading-none w-full">
-                <span className="font-heading font-bold text-xl tracking-[0.15em] text-white uppercase whitespace-nowrap">Diganta Homes</span>
+              <div className="h-16 w-16 overflow-hidden flex items-start">
+                <img src="/Logo/logo-transparent.png" alt="Diganta Homes Logo" className="h-20 w-auto object-cover object-top brightness-110" />
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-bodoni-moda font-bold text-xl tracking-[0.15em] text-white uppercase whitespace-nowrap">Diganta Homes</span>
                 <span className="text-accent text-[10px] font-bold uppercase mt-0.5" style={{ textAlignLast: 'justify' }}>L i m i t e d</span>
               </div>
             </Link>

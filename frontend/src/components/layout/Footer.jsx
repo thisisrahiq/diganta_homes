@@ -9,10 +9,12 @@ const Footer = () => {
       <div className="border-b border-white/10 py-14">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
           <Link to="/" className="flex items-center gap-3 group">
-            <img src="/Logo/logo-transparent.png" alt="Diganta Homes Logo" className="h-24 w-auto opacity-70 group-hover:opacity-100 transition-opacity" />
-            <div className="flex flex-col leading-none w-full">
-              <span className="font-heading font-bold text-xl tracking-[0.15em] text-white uppercase whitespace-nowrap">Diganta Homes</span>
-              <span className="text-accent text-[12px] font-bold uppercase mt-0.5" style={{ textAlignLast: 'justify' }}>L I M I T E D</span>
+            <div className="h-16 w-16 overflow-hidden flex items-start">
+              <img src="/Logo/logo-transparent.png" alt="Diganta Homes Logo" className="h-20 w-auto opacity-70 group-hover:opacity-100 transition-opacity object-cover object-top" />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="font-bodoni-moda font-bold text-xl tracking-[0.15em] text-white uppercase whitespace-nowrap">Diganta Homes</span>
+              <span className="text-accent text-[10px] font-bold uppercase mt-0.5" style={{ textAlignLast: 'justify' }}>L I M I T E D</span>
             </div>
           </Link>
           <p className="text-white/40 text-sm text-center md:text-right max-w-sm leading-relaxed tracking-wide">
