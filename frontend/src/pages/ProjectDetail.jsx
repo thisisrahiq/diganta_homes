@@ -7,7 +7,8 @@ const ProjectDetail = () => {
   const [lightboxImg, setLightboxImg] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/projects/${slug}/`)
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    fetch(`${API_URL}/api/projects/${slug}/`)
       .then(res => res.json())
       .then(data => {
         // Strip ** markdown tags and replace with <strong>

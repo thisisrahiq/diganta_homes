@@ -10,7 +10,8 @@ const FeaturedProjects = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/projects/')
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    fetch(`${API_URL}/api/projects/`)
       .then(res => res.json())
       .then(data => setProjects(data.slice(0, 6)))
       .catch(err => console.error("Error fetching projects:", err));
