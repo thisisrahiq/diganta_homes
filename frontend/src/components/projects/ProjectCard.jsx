@@ -1,4 +1,4 @@
-import { getImageUrl } from '../utils/imageUrl';
+import { getImageUrl } from '../../utils/imageUrl';
 
 const ProjectCard = ({ project }) => {
   return (
