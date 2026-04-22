@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/imageUrl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -58,7 +59,7 @@ const FeaturedProjects = () => {
             >
               <div
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-in-out group-hover:scale-105"
-                style={{ backgroundImage: `url(${projects[0].cover_image})` }}
+                style={{ backgroundImage: `url(${getImageUrl(projects[0].cover_image)})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 p-8 w-full">
@@ -79,7 +80,7 @@ const FeaturedProjects = () => {
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-in-out group-hover:scale-105"
-                  style={{ backgroundImage: `url(${proj.cover_image})` }}
+                  style={{ backgroundImage: `url(${getImageUrl(proj.cover_image)})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 via-transparent to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-0 left-0 p-6 w-full">

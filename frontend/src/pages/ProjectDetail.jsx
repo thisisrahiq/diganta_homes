@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { getImageUrl } from '../utils/imageUrl';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -30,7 +31,7 @@ const ProjectDetail = () => {
       <div className="relative h-[60vh] w-full bg-primary">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{ backgroundImage: `url(${project.cover_image})` }}
+          style={{ backgroundImage: `url(${getImageUrl(project.cover_image)})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
         <div className="absolute bottom-0 left-0 w-full p-8 md:p-16 max-w-7xl mx-auto flex flex-col items-start text-white">
@@ -81,11 +82,11 @@ const ProjectDetail = () => {
                     {project.images.map((img, idx) => (
                         <div 
                             key={idx} 
-                            onClick={() => setLightboxImg(img.image)}
+                            onClick={() => setLightboxImg(getImageUrl(img.image))}
                             className="relative h-64 overflow-hidden group rounded-sm shadow-md cursor-pointer"
                         >
                             <img 
-                                src={img.image} 
+                                src={getImageUrl(img.image)} 
                                 alt={img.caption || `${project.name} gallery image`} 
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
                             />
@@ -108,7 +109,7 @@ const ProjectDetail = () => {
             >
                 ✕
             </button>
-            <img src={lightboxImg} alt="Enlarged view" className="max-w-full max-h-full object-contain shadow-2xl" />
+            <img src={getImageUrl(lightboxImg)} alt="Enlarged view" className="max-w-full max-h-full object-contain shadow-2xl" />
         </div>
       )}
     </div>

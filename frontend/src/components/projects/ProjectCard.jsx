@@ -1,12 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { getImageUrl } from '../utils/imageUrl';
 
 const ProjectCard = ({ project }) => {
   return (
     <Link to={`/projects/${project.slug}`} className="group block relative overflow-hidden rounded-sm shadow-xl bg-white h-[28rem]">
       <div 
          className="absolute inset-0 bg-cover bg-center transform group-hover:scale-110 transition-transform duration-1000 ease-in-out"
-         style={{ backgroundImage: `url(${project.cover_image})` }}
+         style={{ backgroundImage: `url(${getImageUrl(project.cover_image)})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
       
