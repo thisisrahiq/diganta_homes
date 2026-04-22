@@ -1,29 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { Link } from 'react-router-dom';
+import { getImageUrl } from '../../utils/imageUrl';
 
 // Hero slides with the exact 3 projects requested
 const HERO_SLIDES = [
   {
-    image: 'http://127.0.0.1:8000/media/projects/covers/001_yx59dmW.png',
+    image: '/media/projects/covers/001_yx59dmW.png',
     slug: 'diganta-khaja-tower',
     name: 'Diganta Khaja Tower',
     subtitle: 'Mixed-Use | 13 Floors | Bhadderhat, Chattogram',
   },
   {
-    image: 'http://127.0.0.1:8000/media/projects/covers/001_F2Fo5rx.png',
+    image: '/media/projects/covers/001_F2Fo5rx.png',
     slug: 'diganta-khulshi-tower',
     name: 'Diganta Khulshi Tower',
     subtitle: 'Residential | West Khulshi, Chattogram',
   },
   {
-    image: 'http://127.0.0.1:8000/media/projects/covers/001_2QXIycb.png',
+    image: '/media/projects/covers/001_2QXIycb.png',
     slug: 'diganta-alive-tower',
     name: 'Diganta Alive Tower',
     subtitle: 'Residential | Chattogram',
   },
   {
-    image: 'http://127.0.0.1:8000/media/projects/covers/001_UgJF4lj.png',
+    image: '/media/projects/covers/001_UgJF4lj.png',
     slug: 'diganta-shobhan-regency',
     name: 'Diganta Shobhan Regency',
     subtitle: 'Residential | Ongoing | Chattogram',
@@ -70,7 +71,7 @@ const HeroSection = () => {
           <div
             className="w-full h-full bg-cover bg-center"
             style={{
-              backgroundImage: `url(${s.image})`,
+              backgroundImage: `url(${getImageUrl(s.image)})`,
               transform: i === current ? 'scale(1.04)' : 'scale(1)',
               transition: 'transform 8s ease-out',
             }}
