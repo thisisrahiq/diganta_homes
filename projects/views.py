@@ -1,14 +1,23 @@
-from rest_framework import generics
+from rest_framework import viewsets, permissions
 from .models import Project
 from .serializers import ProjectSerializer, ProjectListSerializer
 
-class ProjectListView(generics.ListAPIView):
+class ProjectViewSet(viewsets.ModelViewSet):
     queryset = Project.objects.all().order_by('order', '-created_at')
-    serializer_class = ProjectListSerializer
+    lookup_field = 'slug'
     
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ProjectListSerializer
+        return ProjectSerializer
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.AllowAny()]
+        return [permissions.IsAuthenticated()]
+
     def get_queryset(self):
         queryset = super().get_queryset()
-        # Optional filters:
         status_filter = self.request.query_params.get('status', None)
         type_filter = self.request.query_params.get('type', None)
         if status_filter:
@@ -17,11 +26,6 @@ class ProjectListView(generics.ListAPIView):
             queryset = queryset.filter(type=type_filter)
         return queryset
 
-class ProjectDetailView(generics.RetrieveAPIView):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
-    lookup_field = 'slug'
-
-class FeaturedProjectListView(generics.ListAPIView):
+class FeaturedProjectListView(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.filter(is_featured=True).order_by('order', '-created_at')
     serializer_class = ProjectListSerializer

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { getImageUrl } from '../../utils/imageUrl';
 
 const ProjectCard = ({ project }) => {
@@ -11,7 +12,7 @@ const ProjectCard = ({ project }) => {
       
       <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
         <span className="inline-block px-3 py-1 bg-accent text-white text-xs font-bold tracking-wider mb-4 rounded-sm">
-          {project.status.toUpperCase()}
+          {project.status?.toUpperCase() || 'PROJECT'}
         </span>
         <h3 className="text-2xl font-heading font-bold text-white mb-2">{project.name}</h3>
         <p className="text-gray-300 text-sm tracking-wider uppercase flex justify-between items-center">

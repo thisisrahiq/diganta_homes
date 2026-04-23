@@ -19,6 +19,21 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken.views import obtain_auth_token
+
+from projects.views import ProjectViewSet, FeaturedProjectListView
+from core.views import ContactMessageViewSet
+from news.views import NewsPostViewSet
+from careers.views import JobOpeningViewSet, JobApplicationViewSet
+
+router = DefaultRouter()
+router.register(r'projects', ProjectViewSet, basename='project')
+router.register(r'messages', ContactMessageViewSet, basename='message')
+router.register(r'news', NewsPostViewSet, basename='news')
+router.register(r'careers', JobOpeningViewSet, basename='career')
+router.register(r'applications', JobApplicationViewSet, basename='application')
+
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
@@ -27,7 +42,9 @@ urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('api/projects/', include('projects.urls')),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api-token-auth/', obtain_auth_token),
 ]
 
 if settings.DEBUG:
