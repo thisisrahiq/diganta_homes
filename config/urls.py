@@ -34,14 +34,8 @@ router.register(r'news', NewsPostViewSet, basename='news')
 router.register(r'careers', JobOpeningViewSet, basename='career')
 router.register(r'applications', JobApplicationViewSet, basename='application')
 
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail import urls as wagtail_urls
-from wagtail.documents import urls as wagtaildocs_urls
-
 urlpatterns = [
-    path('django-admin/', admin.site.urls),
-    path('admin/', include(wagtailadmin_urls)),
-    path('documents/', include(wagtaildocs_urls)),
+    path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api-token-auth/', obtain_auth_token),
@@ -50,8 +44,3 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-# Wagtail catches any unhandled paths:
-urlpatterns += [
-    path('', include(wagtail_urls)),
-]

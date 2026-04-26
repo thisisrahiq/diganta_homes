@@ -45,21 +45,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    # Wagtail CMS
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail',
-    'modelcluster',
-    'taggit',
-
     # Local apps
     'projects',
     'core',
@@ -85,7 +70,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware', # Wagtail
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True # Allow all origins for now to fix deployment issues
@@ -163,9 +147,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-WAGTAIL_SITE_NAME = 'Diganta Homes Limited'
-WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
